@@ -23,10 +23,10 @@ export default function Home() {
           </span>
         </div>
         <div className={styles.btnContainer}>
-          <Link href="/isveren-giris">
+          <Link href="/isveren/giris">
             <div className={styles.btn}>İş İlanı Ver</div>
           </Link>
-          <Link href="/is-arayan-giris">
+          <Link href="/is-arayan/giris">
             <div className={styles.btn}>İş Bul</div>
           </Link>
         </div>

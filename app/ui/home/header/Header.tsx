@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MdMenu } from "react-icons/md";
+import { MdOutlineClose } from "react-icons/md";
 import Logo from "@/public/next.svg";
 import MobileNav from "../../mobile-nav/MobileNav";
 
@@ -19,11 +20,13 @@ export const Header = () => {
   return (
     <header className={styles.header}>
       <div>
-        <Image src={Logo} width={100} height={100} alt={"jobPortal logo"} />
+        <Image src={Logo} width={90} height={90} alt={"jobPortal logo"} />
       </div>
       <div className={styles.mobileLinksContainer}>
         <div onClick={() => handleMobileMenu()}>
-          <MdMenu size={40} />
+          {
+            mobileMenu ? <MdOutlineClose size={40} /> : <MdMenu size={40} />
+          }
         </div>
       </div>
       <ul className={styles.desktopLinksContainer}>
@@ -37,7 +40,7 @@ export const Header = () => {
           <Link href="/iletisim">İletişim</Link>
         </li>
       </ul>
-      <MobileNav status={mobileMenu} setStatus={setMobileMenu}/>
+      <MobileNav status={mobileMenu} />
     </header>
   );
 };
