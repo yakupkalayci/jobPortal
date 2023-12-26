@@ -1,8 +1,5 @@
-import Image from "next/image";
-import Logo from "@/public/next.svg";
 import Link from "next/link";
-import clsx from "clsx";
-import { Header } from "./ui/home/header/Header";
+import { Header } from "./ui/header/Header";
 
 import styles from "@/app/ui/home/home.module.css";
 
@@ -10,7 +7,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <Header />
       <main className={styles.main}>
         <div className={styles.titleContainer}>
           <span className={styles.title}>
@@ -23,10 +19,10 @@ export default function Home() {
           </span>
         </div>
         <div className={styles.btnContainer}>
-          <Link href="/isveren/giris">
+          <Link href="/login?type=isveren">
             <div className={styles.btn}>İş İlanı Ver</div>
           </Link>
-          <Link href="/is-arayan/giris">
+          <Link href="/login?type=isarayan">
             <div className={styles.btn}>İş Bul</div>
           </Link>
         </div>

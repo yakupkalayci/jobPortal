@@ -4,7 +4,9 @@
   --text: #333;
   --banner-title: #f7f7f7;
   --secondary-text: #00A7AC;
+  --secondary-text-light: #00c2c9;
   --white: #fff;
+  --input-bg: #ededed
 }
 
 * {
@@ -18,6 +20,17 @@ a {
   text-decoration: none;
 }
 
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
 ul {
   list-style: none;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
