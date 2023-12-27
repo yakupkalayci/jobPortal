@@ -4,7 +4,8 @@
   --text: #333;
   --banner-title: #f7f7f7;
   --secondary-text: #00A7AC;
-  --secondary-text-light: #00c2c9;
+  --secondary-text-lighter: #00b0b6;
+  --secondary-text-lighten: #00c2c9;
   --white: #fff;
   --input-bg: #ededed
 }

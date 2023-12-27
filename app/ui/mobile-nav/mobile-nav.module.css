@@ -6,6 +6,7 @@
     height: 100%;
     background-color: var(--dark-bg);
     transition: all 0.5s;
+    z-index: 10;
 }
 
 .active {

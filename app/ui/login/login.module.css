@@ -4,6 +4,8 @@
     height: 450px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     margin-top: 40px;
+    overflow: hidden;
+    border-radius: 16px;
 }
 
 .left {
@@ -41,7 +43,7 @@
     min-width: 250px;
     text-align: center;
     padding: 20px 10px;
-    background-color: var(--secondary-text-light) ;
+    background-color: var(--secondary-text-lighten) ;
     color: var(--white);
     border: 1px solid var(--secondary-text);
     border-radius: 35px;
@@ -52,7 +54,7 @@
     overflow: hidden;
 }
 
-.btn::before {
+.btn:not(.btnRight):before {
     content: 'Giriş Yap';
     position: absolute;
     top: 0;
@@ -69,10 +71,28 @@
     align-items: center;
 }
 
-.btn:hover {
+.btn:not(.btnRight):hover {
     color: var(--secondary-text);
+}
+
+.btnRight:hover {
+    background-color: var(--secondary-text-lighter);
 }
 
 .btn:hover::before {
     transform: translateY(0);
+}
+
+@media screen and (max-width: 568px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        margin-bottom: 40px;
+        width: 85%;
+    }
+
+    .rightContainer {
+        padding: 40px;
+    }
+    
 }

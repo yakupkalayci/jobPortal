@@ -66,4 +66,21 @@
     color: var(--secondary-text);
     font-weight: bold;
     cursor: pointer;
+    transition: all 0.2s;
+}
+
+.signupInfo > span:hover {
+    color: var(--secondary-text-lighten);
+}
+
+@media screen and (max-width: 568px) {
+    .container {
+        padding: 16px;
+        gap: 24px;
+    }
+
+    .input {
+        width: 100%;
+    }
+    
 }
