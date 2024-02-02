@@ -51,6 +51,7 @@
   flex-direction: column;
   gap: 15px;
   color: var(--banner-title);
+  text-wrap: balance;
 }
 
 .title {
@@ -105,5 +106,13 @@
 
   .link {
     margin-bottom: 20px;
+  }
+
+  .titleContainer {
+    padding: 32px;
+  }
+
+  .main {
+    padding-bottom: 32px;
   }
 }

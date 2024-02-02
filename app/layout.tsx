@@ -1,3 +1,4 @@
+import { Toaster } from "react-hot-toast";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Header } from "./ui/header/Header";
@@ -19,7 +20,12 @@ export default function RootLayout({
     <html lang="tr">
       <body className={inter.className}>
         <Header />
-        <div className="main">{children}</div>
+        <div className="main">
+          <>
+            <Toaster />
+            {children}
+          </>
+        </div>
       </body>
     </html>
   );

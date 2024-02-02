@@ -15,11 +15,7 @@ function Login(props: LoginProps) {
   // destruct props
   const { searchParams } = props;
   let type = searchParams?.type || "default";
-
-  // methods
-  const changeType = async () => {
-    "use server";
-  };
+  
 
   return (
     <div className={styles.container}>
@@ -28,7 +24,7 @@ function Login(props: LoginProps) {
       </div>
       <div className={styles.right}>
         <div className={styles.rightContainer}>
-          <h1 className={styles.rightHeading}>{type} girişi</h1>
+          <h1 className={styles.rightHeading}>{type === 'default' ||type === 'isarayan' ? 'İş Arayan' : 'İşveren'} girişi</h1>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. A eos totam
             laboriosam officiis, impedit voluptate eius! Obcaecati dicta earum

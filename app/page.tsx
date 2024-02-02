@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { Header } from "./ui/header/Header";
-
 import styles from "@/app/ui/home/home.module.css";
 
 export default function Home() {
