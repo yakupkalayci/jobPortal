@@ -6,8 +6,7 @@ import { MdMenu } from "react-icons/md";
 import { MdOutlineClose } from "react-icons/md";
 import Logo from "@/public/next.svg";
 import MobileNav from "../mobile-nav/MobileNav";
-
-import styles from "@/app/ui/home/home.module.css";
+import styles from "@/app/_styles/home.module.css";
 
 
 export const Header = () => {
@@ -33,13 +32,13 @@ export const Header = () => {
       </div>
       <ul className={styles.desktopLinksContainer}>
         <li className={styles.link}>
-          <Link href="/hakkimizda">Hakkımızda</Link>
+          <Link href="/about">Hakkımızda</Link>
         </li>
         <li className={styles.link}>
           <Link href="/blog">Blog</Link>
         </li>
         <li className={styles.link}>
-          <Link href="/iletisim">İletişim</Link>
+          <Link href="/contact">İletişim</Link>
         </li>
       </ul>
       <MobileNav status={mobileMenu} />

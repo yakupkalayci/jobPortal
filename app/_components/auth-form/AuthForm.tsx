@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import { useFormState } from "react-dom";
 import toast from "react-hot-toast";
-import { authAction } from "@/app/lib/actions";
-import { loginTypes } from "@/app/login/page";
-import styles from "./authForm.module.css";
+import { authAction } from "@/app/_lib/actions";
+import { loginTypes } from "@/app/(marketing)/login/page";
+import styles from "@/app/_styles/authForm.module.css";
 
 interface AuthProps {
   type: loginTypes;

@@ -33,7 +33,7 @@
 }
 
 .main {
-  background-image: linear-gradient(rgba(23,23,23,0.8),rgba(23,23,23,0.8)),url(../../../public/home-banner-bg.png);
+  background-image: linear-gradient(rgba(23,23,23,0.8),rgba(23,23,23,0.8)),url(../../public/home-banner-bg.png);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

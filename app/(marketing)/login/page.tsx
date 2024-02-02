@@ -1,6 +1,6 @@
-import AuthForm from "../ui/login/auth-form/AuthForm";
-import styles from "@/app/ui/login/login.module.css";
+import AuthForm from "@/app/_components/auth-form/AuthForm";
 import Link from "next/link";
+import styles from '@/app/_styles/login.module.css';
 
 export type loginTypes = "isveren" | "isarayan" | "default";
 

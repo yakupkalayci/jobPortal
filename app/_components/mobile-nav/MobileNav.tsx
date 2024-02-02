@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "./mobile-nav.module.css";
+import styles from '@/app/_styles/mobile-nav.module.css';
 
 interface MobileNavProps {
   status: boolean;
