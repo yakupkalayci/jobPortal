@@ -6,7 +6,7 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
-import { redirect, permanentRedirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import { formType } from "@/app/_components/auth-form/AuthForm";
 import { loginTypes } from "@/app/(public)/login/page";
 
@@ -19,7 +19,7 @@ export const authAction = async (prevState: any, formData: FormData) => {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
-  let success;
+  let success = false;
 
   if (formType === "login") {
     try {
@@ -28,23 +28,30 @@ export const authAction = async (prevState: any, formData: FormData) => {
       const docRef = await getDoc(doc(db, "users", response.user.uid));
 
       if (docRef.exists()) {
-        if (docRef.data().type === userType) {
-          success = true;
+        if (docRef.data().type !== userType) {
+          const errorMsg = `Giriş yaptığınız kullanıcı ${
+            userType === "isarayan" ? "iş veren" : "iş arayan"
+          } olarak kayıt edilmiş. Lütfen ${
+            userType === "isarayan" ? "iş veren" : "iş arayan"
+          } olarak giriş yapınız.`;
+          return { msg: errorMsg };
         }
+      } else {
+        return { msg: "An unexpected error happened! Please try again." };
       }
 
-      const errorMsg = `Giriş yaptığınız kullanıcı ${
-        userType === "isarayan" ? "iş veren" : "iş arayan"
-      } olarak kayıt edilmiş. Lütfen ${
-        userType === "isarayan" ? "iş veren" : "iş arayan"
-      } olarak giriş yapınız.`;
-      return { msg: errorMsg };
+      const serverResponse = await fetch(`${process.env.URL}/api/login`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${await response.user.getIdToken()}`,
+        },
+      });
+
+      if (serverResponse.status === 200) {
+        success = true;
+      }
     } catch (err) {
       return { msg: err.message };
-    } finally {
-      if (success) {
-        redirect("dashboard");
-      }
     }
   }
   if (formType === "signup") {
@@ -62,10 +69,10 @@ export const authAction = async (prevState: any, formData: FormData) => {
       success = true;
     } catch (err) {
       return { msg: err.code };
-    } finally {
-      if (success) {
-        redirect("dashboard");
-      }
     }
+  }
+
+  if (success) {
+    redirect("dashboard");
   }
 };
