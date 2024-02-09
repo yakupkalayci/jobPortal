@@ -1,0 +1,17 @@
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px 10px;
+    border-radius: 35px;
+    letter-spacing: 1.5px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+.bg-primary {
+    background-color: var(--secondary-text);
+    color: var(--white);
+}

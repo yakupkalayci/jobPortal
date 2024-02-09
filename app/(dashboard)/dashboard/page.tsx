@@ -1,20 +1,13 @@
-"use client";
-import { authAction } from "@/app/_lib/actions/authActions";
-import { logout } from "@/app/_lib/actions/logout";
-import { useFormState } from "react-dom";
+import Content from "./_partials/Content";
+import Menu from "./_partials/Menu";
+import styles from '@/app/_styles/dashboard.module.css';
 
 function Dashboard() {
 
-  const [state, formAction] = useFormState(authAction, { msg: "" });
-
-
   return (
-    <div>
-      Dashboard
-      <form action={formAction}>
-        <input type="hidden" name="formType" value="signout" />
-        <button>Logout</button> 
-      </form>
+    <div className={styles.container}>
+      <Menu />
+      <Content />
     </div>
   );
 }

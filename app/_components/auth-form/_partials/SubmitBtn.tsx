@@ -1,6 +1,6 @@
 import { useFormStatus } from "react-dom";
 import { formType } from "../AuthForm";
-import styles from "@/app/_styles/authForm.module.css";
+import ServerButton from "../../button/ServerButton";
 
 interface SubmitBtnProps {
   formType: formType;
@@ -14,17 +14,12 @@ function SubmitBtn(props: SubmitBtnProps) {
   const { pending } = useFormStatus();
 
   return (
-    <>
-      <button type="submit" className={styles.btn}>
-        {pending ? (
-          <i className="fa fa-circle-o-notch fa-spin fa-lg"></i>
-        ) : formType === "login" ? (
-          "Giriş Yap"
-        ) : (
-          "Kayıt Ol"
-        )}
-      </button>
-    </>
+    <ServerButton
+      pending={pending}
+      title={formType === "login" ? "Giriş Yap" : "Kayıt Ol"}
+      bgColor="primary"
+      extraStyles={{ width: "40%" }}
+    />
   );
 }
 

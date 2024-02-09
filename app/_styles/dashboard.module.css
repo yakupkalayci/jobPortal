@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100vw;
+    padding: 10px 50px;
+    gap: 15px;
+}
+
+.menuContainer {
+    width: 20vw;
+    background-color: #ececec;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 1rem;
+}
+
+.menuItem {
+    padding-left: 2rem;
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.menuItem:hover:not(.menuItem:last-child) {
+    background-color: var(--bg);
+}
+
+.menuContainer a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contentContainer {
+    width: 80vw;
+    border-radius: 8px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.ads {
+    background-color: #ececec;
+    border-radius: 8px;
+    height: 100%;
+}
