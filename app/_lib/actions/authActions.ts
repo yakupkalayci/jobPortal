@@ -1,25 +1,28 @@
 "use server";
-
 import { auth, db } from "../firebase/firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  signOut
 } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { redirect } from "next/navigation";
 import { formType } from "@/app/_components/auth-form/AuthForm";
 import { loginTypes } from "@/app/(public)/login/page";
+import { login } from "./login";
+import { logout } from "./logout";
 
 export const authAction = async (prevState: any, formData: FormData) => {
   const userType =
-    (formData.get("userType") as loginTypes) === "default"
+    formData.get("userType") === "default"
       ? "isarayan"
-      : formData.get("userType");
+      : (formData.get("userType") as loginTypes);
   const formType = formData.get("formType") as formType;
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
-  let success = false;
+  let successLogin = false;
+  let successLogout = false;
 
   if (formType === "login") {
     try {
@@ -40,15 +43,9 @@ export const authAction = async (prevState: any, formData: FormData) => {
         return { msg: "An unexpected error happened! Please try again." };
       }
 
-      const serverResponse = await fetch(`${process.env.URL}/api/login`, {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${await response.user.getIdToken()}`,
-        },
-      });
-
-      if (serverResponse.status === 200) {
-        success = true;
+      const isLogged = await login(await response.user.getIdToken());
+      if (isLogged) {
+        successLogin = true;
       }
     } catch (err) {
       return { msg: err.message };
@@ -66,13 +63,33 @@ export const authAction = async (prevState: any, formData: FormData) => {
         type: userType,
       });
 
-      success = true;
+      const isLogged = await login(await response.user.getIdToken());
+      if (isLogged) {
+        successLogin = true;
+      }
     } catch (err) {
       return { msg: err.code };
     }
   }
 
-  if (success) {
+  if(formType === 'signout') {
+    try {
+      const response = await signOut(auth);
+
+      const isLogouted = await logout();
+
+      if(isLogouted) {
+        successLogout = true;
+      }
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
+  if (successLogin) {
     redirect("dashboard");
+  }
+  if(successLogout) {
+    redirect(`${process.env.URL}`);
   }
 };

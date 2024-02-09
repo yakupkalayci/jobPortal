@@ -1,5 +1,5 @@
 import AuthForm from "@/app/_components/auth-form/AuthForm";
-import Link from "next/link";
+import LoginTypeBtn from "./_partials/LoginTypeBtn";
 import styles from '@/app/_styles/login.module.css';
 
 export type loginTypes = "isveren" | "isarayan" | "default";
@@ -14,7 +14,7 @@ interface LoginProps {
 function Login(props: LoginProps) {
   // destruct props
   const { searchParams } = props;
-  let type = searchParams?.type || "default";
+  const type = searchParams?.type || "default";
   
 
   return (
@@ -31,17 +31,7 @@ function Login(props: LoginProps) {
             soluta tempore totam, dignissimos, autem libero omnis nostrum nulla
             quod eius.
           </p>
-          <Link
-            href={`/login?type=${
-              type === "default" || type === "isarayan" ? "isveren" : "isarayan"
-            }`}
-          >
-            <button className={`${styles.btn} ${styles.btnRight}`}>
-              {type === "default" || type === "isarayan"
-                ? "İşveren Olarak Giriş Yap"
-                : "İş Arayan Olarak Giriş Yap"}
-            </button>
-          </Link>
+          <LoginTypeBtn type={type} />
         </div>
       </div>
     </div>
