@@ -3,7 +3,7 @@ import { auth, db } from "../firebase/firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signOut
+  signOut,
 } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { redirect } from "next/navigation";
@@ -13,10 +13,11 @@ import { login } from "./login";
 import { logout } from "./logout";
 
 export const authAction = async (prevState: any, formData: FormData) => {
-  const userType =
-    formData.get("userType") === "default"
-      ? "isarayan"
-      : (formData.get("userType") as loginTypes);
+  const userTypeFormData = formData.get("userType") as loginTypes;
+  let userType =
+    userTypeFormData === "default" || userTypeFormData === "isarayan"
+      ? "employee"
+      : "employer";
   const formType = formData.get("formType") as formType;
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
@@ -72,16 +73,16 @@ export const authAction = async (prevState: any, formData: FormData) => {
     }
   }
 
-  if(formType === 'signout') {
+  if (formType === "signout") {
     try {
       const response = await signOut(auth);
 
       const isLogouted = await logout();
 
-      if(isLogouted) {
+      if (isLogouted) {
         successLogout = true;
       }
-    } catch(err) {
+    } catch (err) {
       console.log(err);
     }
   }
@@ -89,7 +90,7 @@ export const authAction = async (prevState: any, formData: FormData) => {
   if (successLogin) {
     redirect("dashboard");
   }
-  if(successLogout) {
+  if (successLogout) {
     redirect(`${process.env.URL}`);
   }
 };

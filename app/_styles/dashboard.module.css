@@ -35,7 +35,7 @@
 .contentContainer {
     width: 80vw;
     border-radius: 8px;
-    padding: 2rem;
+    padding: 0 2rem;
     display: flex;
     flex-direction: column;
     gap: 15px;
