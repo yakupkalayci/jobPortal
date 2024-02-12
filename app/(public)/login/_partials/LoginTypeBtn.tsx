@@ -1,6 +1,6 @@
 import Link from "next/link";
+import ClientButton from "@/app/_components/button/ClientButton";
 import { loginTypes } from "../page";
-import styles from "@/app/_styles/login.module.css";
 
 interface LoginTypeBtnProps {
   type: loginTypes;
@@ -16,11 +16,15 @@ function LoginTypeBtn(props: LoginTypeBtnProps) {
         type === "default" || type === "isarayan" ? "isveren" : "isarayan"
       }`}
     >
-      <button className={`${styles.btn} ${styles.btnRight}`}>
-        {type === "default" || type === "isarayan"
-          ? "İşveren Olarak Giriş Yap"
-          : "İş Arayan Olarak Giriş Yap"}
-      </button>
+      <ClientButton
+        title={
+          type === "default" || type === "isarayan"
+            ? "İşveren Olarak Giriş Yap"
+            : "İş Arayan Olarak Giriş Yap"
+        }
+        type="button"
+        bgColor="secondary"
+      />
     </Link>
   );
 }

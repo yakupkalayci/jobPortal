@@ -61,7 +61,9 @@ function AuthForm(props: AuthProps) {
           required
         />
       </div>
-      <SubmitBtn formType={formType} />
+      <div className={styles.buttonContainer}>
+        <SubmitBtn formType={formType} />
+      </div>
       <div className={styles.signupInfo}>
         {formType === "login"
           ? "Henüz hesabınız yok mu? "

@@ -16,9 +16,9 @@ function SubmitBtn(props: SubmitBtnProps) {
   return (
     <ServerButton
       pending={pending}
+      type="submit"
       title={formType === "login" ? "Giriş Yap" : "Kayıt Ol"}
       bgColor="primary"
-      extraStyles={{ width: "40%" }}
     />
   );
 }

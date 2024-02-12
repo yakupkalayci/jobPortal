@@ -23,6 +23,10 @@
     margin-bottom: 1rem;
 }
 
+.buttonContainer {
+    width: 40%;
+}
+
 .btn {
     min-width: 250px;
     text-align: center;

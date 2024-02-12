@@ -1,8 +1,8 @@
 import Link from "next/link";
-import styles from '@/app/_styles/home.module.css'
+import ClientButton from "../_components/button/ClientButton";
+import styles from "@/app/_styles/home.module.css";
 
 export default function Home() {
-
   return (
     <div className={styles.container}>
       <main className={styles.main}>
@@ -18,10 +18,22 @@ export default function Home() {
         </div>
         <div className={styles.btnContainer}>
           <Link href="/login?type=isveren">
-            <div className={styles.btn}>İş İlanı Ver</div>
+            <ClientButton
+              title="İş İlanı Ver"
+              type="button"
+              bgColor="primary"
+              extraClassName="home-btn"
+              extraStyles={{ borderRadius: "5px", width: "200px" }}
+            />
           </Link>
           <Link href="/login?type=isarayan">
-            <div className={styles.btn}>İş Bul</div>
+            <ClientButton
+              title="İş Bul"
+              type="button"
+              bgColor="primary"
+              extraClassName="home-btn"
+              extraStyles={{ borderRadius: "5px", width: "200px" }}
+            />
           </Link>
         </div>
       </main>

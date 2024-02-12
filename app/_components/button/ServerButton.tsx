@@ -1,42 +1,21 @@
-import { ReactElement, ReactNode } from "react";
-import styles from "@/app/_styles/button.module.css";
+import { ButtonProps } from "./Button";
+import Button from "./Button";
 
-interface ButtonProps {
-  title: string;
-  pending?: boolean;
-  icon?: ReactElement | ReactNode;
-  bgColor?: "primary" | "secondary" | string[];
-  extraStyles?: {};
-}
+type ServerButtonProps = Omit<ButtonProps, "onClick">;
 
-function ServerButton(props: ButtonProps) {
+function ServerButton(props: ServerButtonProps) {
   // destruct props
-  let { title, pending, icon, bgColor, extraStyles } = props;
-
-  if (typeof bgColor === "string" && bgColor) {
-    bgColor = bgColor.split("");
-    bgColor.unshift("bg-");
-    bgColor = bgColor.join("") as any;
-  }
+  let { title, type, pending, icon, bgColor, extraStyles } = props;
 
   return (
-    <button
-      type="submit"
-      disabled={pending}
-      className={`${styles.btn} ${
-        bgColor && typeof bgColor === "string" && styles[bgColor]
-      }`}
-      style={extraStyles}
-    >
-      {pending ? (
-        <i className="fa fa-circle-o-notch fa-spin fa-lg"></i>
-      ) : (
-        <>
-          {icon}
-          {title}
-        </>
-      )}
-    </button>
+    <Button
+      title={title}
+      type={type}
+      pending={pending}
+      icon={icon}
+      bgColor={bgColor}
+      extraStyles={extraStyles}
+    />
   );
 }
 

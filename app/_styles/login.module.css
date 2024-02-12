@@ -39,48 +39,8 @@
     text-transform: uppercase;
 }
 
-.btn {
-    min-width: 250px;
-    text-align: center;
-    padding: 20px 10px;
-    background-color: var(--secondary-text-lighten) ;
-    color: var(--white);
-    border: 1px solid var(--secondary-text);
-    border-radius: 35px;
-    letter-spacing: 1.5px;
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn:not(.btnRight):before {
-    content: 'Giriş Yap';
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: var(--white);
-    width: 100%;
-    height: 100%;
-    transform: translateY(-120%);
-    border-radius: 35px;
-    transition: all 0.5s;
-    color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.btn:not(.btnRight):hover {
-    color: var(--secondary-text);
-}
-
-.btnRight:hover {
-    background-color: var(--secondary-text-lighter);
-}
-
-.btn:hover::before {
-    transform: translateY(0);
+.loginTypeBtn {
+    width: 45%;
 }
 
 @media screen and (max-width: 568px) {

@@ -69,27 +69,6 @@
   gap: 70px;
 }
 
-.btn {
-  padding: 10px;
-  background-color: var(--secondary-text);
-  color: var(--white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  width: 200px;
-  height: 50px;
-  border-radius: 5px;
-  letter-spacing: 2px;
-  transition: all 0.5s;
-}
-
-.btn:hover {
-  background-color: var(--white);
-  color: var(--secondary-text);
-  border: 1px solid var(--secondary-text);
-}
-
 @media screen and (max-width: 567px) {
   .btnContainer {
     flex-direction: column;
